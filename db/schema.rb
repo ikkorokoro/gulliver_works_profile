@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2021_04_25_075044) do
   end
 
   create_table "profiles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "employee_id"
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
@@ -133,6 +135,8 @@ ActiveRecord::Schema.define(version: 2021_04_25_075044) do
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_profiles_on_account_id"
+    t.index ["employee_id"], name: "index_profiles_on_employee_id"
   end
 
   add_foreign_key "employees", "companies"

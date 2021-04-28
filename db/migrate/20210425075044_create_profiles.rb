@@ -1,6 +1,8 @@
 class CreateProfiles < ActiveRecord::Migration[6.0]
   def change
     create_table :profiles, id: :uuid do |t|
+      t.references :account
+      t.references :employee
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :first_name_kana, null: false
