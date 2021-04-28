@@ -10,7 +10,7 @@ class Employee < ApplicationRecord
   end
 
   has_secure_password
-
+  has_one :profile, dependent: :destroy
   belongs_to :company
 
   enum email_verification_status: { unspecified: 0, requested: 1, verified: 2 }
