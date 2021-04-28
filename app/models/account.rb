@@ -10,7 +10,7 @@ class Account < ApplicationRecord
   end
 
   has_secure_password
-
+  has_one :profile, dependent: :destroy
   enum email_verification_status: { unspecified: 0, requested: 1, verified: 2 }
 
   validates :email, presence: true, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
